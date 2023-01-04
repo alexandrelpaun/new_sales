@@ -1,3 +1,5 @@
+import 'package:auto_sales_flutter/cars/anunturi_masini.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:email_validator/email_validator.dart';
@@ -16,6 +18,8 @@ class _LoginState extends State<Login> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _userController = TextEditingController();
+
+  final _auth = FirebaseAuth.instance;
 
   String? _userName, _password;
 
@@ -77,7 +81,29 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: 20.0),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      print(
+                          '${_passwordController.text}-${_userController.text}');
+
+                      try {
+                        final newUser = await _auth.signInWithEmailAndPassword(
+                            email: _userController.text,
+                            password: _passwordController.text);
+
+                        print(newUser.user!.displayName);
+
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => Anunturi()),
+                            (route) => false);
+                      } on FirebaseAuthException catch (e) {
+                        print(e.code);
+                      } catch (e) {
+                        print(e);
+                      }
+                    }
+                  },
                   child: Text(
                     'Login',
                     textAlign: TextAlign.center,

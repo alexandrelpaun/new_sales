@@ -26,7 +26,7 @@ class AutoSales extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Auto Sales'),
           ),
-          body: Register(),
+          body: Login(),
         ));
   }
 }

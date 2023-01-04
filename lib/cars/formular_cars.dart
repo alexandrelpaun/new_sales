@@ -1,4 +1,5 @@
 import 'package:auto_sales_flutter/cars/anunturi_masini.dart';
+import 'package:auto_sales_flutter/key.dart';
 import 'package:auto_sales_flutter/models/model_formular.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
@@ -16,7 +17,7 @@ Future<http.Response> sendEmail(ModelFormular mesaj) async {
       headers: <String, String>{
         'Content-Type': 'application/json',
         'Authorization':
-            'Bearer $Key.SENDGRID_API_KEY' // nu am reusit sa obtin token key, inca incecrc sa inregistrez DNS in wordPress
+            'Bearer $Keys.SENDGRID_API_KEY' // nu am reusit sa obtin token key, inca incecrc sa inregistrez DNS in wordPress
       },
       body:'{"personalizations": [{"to": [{"email": "${mesaj.email}"}]}],"from": {"email": "alex@em381.samsareala.ro"},"subject": "Sending with SendGrid is Fun","content": [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]}'
           );
