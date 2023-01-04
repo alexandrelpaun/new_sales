@@ -9,15 +9,14 @@ import 'package:http/http.dart' as http;
 import 'package:auto_sales_flutter/models/anunt_cars.dart';
 
 Future<http.Response> sendEmail(ModelFormular mesaj) async {
-  String SENDGRID_API_KEY =
-      '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';
+   
 
   final response = await http.post(
       Uri.parse('https://api.sendgrid.com/v3/mail/send'),
       headers: <String, String>{
         'Content-Type': 'application/json',
         'Authorization':
-            'Bearer $SENDGRID_API_KEY' // nu am reusit sa obtin token key, inca incecrc sa inregistrez DNS in wordPress
+            'Bearer $Key.SENDGRID_API_KEY' // nu am reusit sa obtin token key, inca incecrc sa inregistrez DNS in wordPress
       },
       body:'{"personalizations": [{"to": [{"email": "${mesaj.email}"}]}],"from": {"email": "alex@em381.samsareala.ro"},"subject": "Sending with SendGrid is Fun","content": [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]}'
           );
@@ -26,6 +25,8 @@ Future<http.Response> sendEmail(ModelFormular mesaj) async {
 
   return (response);
 }
+
+
 
 class Formular extends StatefulWidget {
   const Formular({super.key});
