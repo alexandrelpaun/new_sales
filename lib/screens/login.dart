@@ -26,22 +26,18 @@ class _LoginState extends State<Login> {
         title: Text('Login'),
       ),
       body: SingleChildScrollView(
-       
         child: Container(
           padding: EdgeInsets.all(40.0),
           child: Form(
-             key: _formKey,
+            key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 Text('Email'),
                 SizedBox(height: 5.0),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   controller: _userController,
-
-               
                   autofocus: false,
                   validator: (value) {
                     if (value != null && !EmailValidator.validate(value)) {
@@ -81,9 +77,7 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: 20.0),
                 ElevatedButton(
-                  onPressed: () {
-                    
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Login',
                     textAlign: TextAlign.center,
