@@ -1,5 +1,6 @@
 import 'package:auto_sales_flutter/cars/formular_cars.dart';
 import 'package:auto_sales_flutter/models/anunt_piese.dart';
+import 'package:auto_sales_flutter/screens/forgot_password.dart';
 import 'package:auto_sales_flutter/screens/login.dart';
 import 'package:auto_sales_flutter/screens/register.dart';
 import 'package:firebase_core/firebase_core.dart';

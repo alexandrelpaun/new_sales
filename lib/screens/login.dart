@@ -1,4 +1,5 @@
 import 'package:auto_sales_flutter/cars/anunturi_masini.dart';
+import 'package:auto_sales_flutter/screens/forgot_password.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -65,7 +66,7 @@ class _LoginState extends State<Login> {
                   controller: _passwordController,
                   autofocus: false,
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
+                    if (value != null && !EmailValidator.validate(value)) {
                       return ' Please enter your password';
                     } else {
                       return null;
@@ -114,7 +115,13 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgotPassword()),
+                            (route) => false);
+                      },
                       child: Text(
                         'Forgot your password?',
                         textAlign: TextAlign.left,
